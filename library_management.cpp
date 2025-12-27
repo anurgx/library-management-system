@@ -1,6 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Book {
@@ -20,7 +18,7 @@ public:
 
 vector<Book> library;
 
-// Load books from file
+
 void loadBooks() {
     library.clear();
     ifstream file("library.txt");
@@ -40,7 +38,7 @@ void loadBooks() {
     file.close();
 }
 
-// Save books to file
+
 void saveBooks() {
     ofstream file("library.txt");
     for (auto &b : library) {
@@ -52,7 +50,7 @@ void saveBooks() {
     file.close();
 }
 
-// Add a new book
+
 void addBook() {
     int id;
     string title, author;
@@ -69,13 +67,13 @@ void addBook() {
 
     library.push_back(Book(id, title, author));
     saveBooks();
-    cout << "Book added successfully!\n";
+    cout << "Book added successfully!" << endl;
 }
 
-// View all books
+
 void viewBooks() {
     if (library.empty()) {
-        cout << "No books available.\n";
+        cout << "No books available." << endl;
         return;
     }
 
@@ -88,7 +86,7 @@ void viewBooks() {
     }
 }
 
-// Search book
+
 void searchBook() {
     int id;
     cout << "Enter Book ID to search: ";
@@ -96,17 +94,17 @@ void searchBook() {
 
     for (auto &b : library) {
         if (b.id == id) {
-            cout << "Book Found:\n";
+            cout << "Book Found:" << endl;
             cout << "Title: " << b.title << endl;
             cout << "Author: " << b.author << endl;
             cout << "Status: " << (b.issued ? "Issued" : "Available") << endl;
             return;
         }
     }
-    cout << "Book not found.\n";
+    cout << "Book not found." << endl;
 }
 
-// Issue book
+
 void issueBook() {
     int id;
     cout << "Enter Book ID to issue: ";
@@ -115,19 +113,19 @@ void issueBook() {
     for (auto &b : library) {
         if (b.id == id) {
             if (b.issued) {
-                cout << "Book already issued.\n";
+                cout << "Book already issued." << endl;
             } else {
                 b.issued = true;
                 saveBooks();
-                cout << "Book issued successfully.\n";
+                cout << "Book issued successfully." << endl;
             }
             return;
         }
     }
-    cout << "Book not found.\n";
+    cout << "Book not found." << endl;
 }
 
-// Return book
+
 void returnBook() {
     int id;
     cout << "Enter Book ID to return: ";
@@ -136,31 +134,32 @@ void returnBook() {
     for (auto &b : library) {
         if (b.id == id) {
             if (!b.issued) {
-                cout << "Book was not issued.\n";
+                cout << "Book was not issued." << endl;
             } else {
                 b.issued = false;
                 saveBooks();
-                cout << "Book returned successfully.\n";
+                cout << "Book returned successfully." << endl;
             }
             return;
         }
     }
-    cout << "Book not found.\n";
+    cout << "Book not found." << endl;
 }
 
-// Main menu
+
 int main() {
     loadBooks();
     int choice;
 
     do {
-        cout << "\n--- Library Management System ---\n";
-        cout << "1. Add Book\n";
-        cout << "2. View Books\n";
-        cout << "3. Search Book\n";
-        cout << "4. Issue Book\n";
-        cout << "5. Return Book\n";
-        cout << "0. Exit\n";
+        cout << endl;
+        cout << "--- Library Management System ---" << endl;
+        cout << "1. Add Book" << endl;
+        cout << "2. View Books" << endl;
+        cout << "3. Search Book" << endl;
+        cout << "4. Issue Book" << endl;
+        cout << "5. Return Book" << endl;
+        cout << "0. Exit" << endl;
         cout << "Enter choice: ";
         cin >> choice;
 
@@ -170,10 +169,12 @@ int main() {
             case 3: searchBook(); break;
             case 4: issueBook(); break;
             case 5: returnBook(); break;
-            case 0: cout << "Exiting...\n"; break;
-            default: cout << "Invalid choice!\n";
+            case 0: cout << "Exiting..." << endl; break;
+            default: cout << "Invalid choice!" << endl;
         }
     } while (choice != 0);
 
     return 0;
 }
+
+

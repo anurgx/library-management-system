@@ -13,6 +13,4 @@ A console-based library management system built using C++ and file handling.
 - File Handling
 - Data Structures
 
-## How to Run
-g++ library.cpp -o library
-./library
+
